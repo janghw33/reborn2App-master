@@ -1,0 +1,3 @@
+<template>
+  <BasePage :PageContext=""
+</template>

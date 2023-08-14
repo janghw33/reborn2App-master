@@ -1,0 +1,4 @@
+<template>
+  <BasePage>
+  </BasePage>
+</template>

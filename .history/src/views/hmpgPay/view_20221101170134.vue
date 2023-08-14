@@ -1,0 +1,9 @@
+<template>
+  <BaseForm :formContext="formContext">
+  </BaseForm>
+</template>
+
+<script lang="ts" setup>
+import { inject, reactive } from 'vue'
+import BaseForm, { IFormContext } from ''
+</script>

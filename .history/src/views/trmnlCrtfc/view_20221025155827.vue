@@ -1,0 +1,89 @@
+<!-- 
+  created: 장형욱 
+-->
+<template>
+  <BaseForm :formContext="formContext">
+    <div class ="col-6">
+      <FormItem label="단말기코드" :required="true" name="trmnlCode">
+        <Input type="text" v-model="formContext.formData.trmnlCrtfcCode"></Input>
+      </FormItem>
+    </div>
+    <div class ="col-6">
+      <FormItem label="단말기명" :required="true" name="trmnlNm">
+        <Input type="text" v-model="formContext.formData.trmnlCrtfcNm"></Input>
+      </FormItem>
+    </div>
+    <div class ="col-8">
+      <FormItem label="단말기설명" :required="true" name="trmnlDcContents">
+        <Input type="text" v-model="formContext.formData.etcContents"></Input>
+      </FormItem>
+      <FormItem label="사용 여부" :required="true" name="useYn">
+        <Input type="checkbox" v-model="formContext.formData.useYn"></Input>
+      </FormItem>
+    </div>
+    
+  </BaseForm>
+</template>
+
+<script lang="ts">
+  import { inject, reactive } from 'vue'
+  import BaseForm, { IFormContext } from "@/components/reborn/BaseList.vue";
+  import ApiService from "@/core/services/ApiService";
+  import FormItem from '@/components/reborn/FormItem.vue'
+  import Input from '@/components/reborn/Input.vue'
+  import { FormRules } from 'element-plus'
+
+  const reload = inject('reload', () => {})
+
+  const formContext = reactive<IFormContext>({
+    formData: {},
+    rules: reactive<FormRules>({
+
+    }),
+    modal: {
+      title: '전자계약단말기 설정',
+      width: '800px',
+      onOpen(data) {
+        form
+      }
+    }
+
+  }
+
+      const baseModalEvents: IBaseModalEventHandler = {
+        onModalOpen(data: any) {
+
+        },
+        onAddClick(data: any, command: any, callback: any) {          
+          ApiService.call("post", "trmnlCrtfc", {
+            data: data
+          }).then(callback)
+        },
+        onUpdateClick(data: any, command: any, callback: any) {
+          ApiService.call("put", "trmnlCrtfc", {
+            data: data
+          }).then(callback)
+        },
+        onDeleteClick(data: any, callback: any) {
+          ApiService.call("delete", "trmnlCrtfc", {
+            data: data
+          }).then(callback)
+        },
+      }
+      
+      return {
+        baseModal,
+        pageData,
+        validationSchema,
+        baseModalEvents
+      }
+    }
+  });
+
+  defineExpose({
+  formContext: formContext,
+})
+</script>
+
+<style>
+</style>

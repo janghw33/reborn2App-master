@@ -1,0 +1,18 @@
+<template>
+  <BasePage :pageContext="pageContext">
+    <BaseForm :formContext="formContext">
+      <div class="card">
+        <div calss="card-header pb-2">
+
+        </div>
+      </div>
+  </BasePage>
+</template>
+
+<script lang="ts" setup>
+import { inject, reactive } from 'vue'
+import BaseForm, {IFormContext } from '@/components/reborn/BaseForm.vue'
+import ApiService from '@/core/services/ApiService'
+
+
+</script>

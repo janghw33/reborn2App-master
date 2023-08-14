@@ -1,0 +1,3 @@
+<template>
+  <BaseForm :form
+</template>
